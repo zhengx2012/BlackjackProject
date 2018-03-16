@@ -4,15 +4,18 @@ import com.skilldistillery.cards.common.*;
 
 public class Dealer {
 	private Deck deck;
+	private Hand hand;
 
 	public Dealer() {
-		
+		deck = new Deck();
+	}
+
+	public void hit() {
+		deck.dealCard();
 	}
 	
-	public Card dealHand() {
-		return deck.dealCard();
+	public Hand getHand() {
+		return hand;
 	}
-	
+
 }
-
-

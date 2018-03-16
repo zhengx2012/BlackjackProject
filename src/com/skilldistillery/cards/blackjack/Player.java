@@ -4,10 +4,7 @@ public class Player {
 	public Hand hand;
 	public String name;
 
-	public Player(Hand hand, String name) {
-		super();
-		this.hand = hand;
-		this.name = name;
+	public Player() {
 	}
 
 	public Hand getHand() {
