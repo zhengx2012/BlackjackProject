@@ -1,29 +1,54 @@
 package com.skilldistillery.cards.blackjack;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.skilldistillery.cards.common.Card;
+import com.skilldistillery.cards.common.*;
 
 public class Hand {
+
 	public List<Card> hand;
 
-	public Hand(List<Card> hand) {
-		super();
-		this.hand = hand;
+	public Hand() {
+		hand = new ArrayList<>();
+
 	}
-	
-	public void addCard(Card card) { 
+
+	public void addCard(Card card) {
 		hand.add(card);
-		
+
 	}
-	
-	public Hand getCardsInHand() {
-		return null;
+
+	public List<Card> getCardsInHand() {
+		return hand;
 	}
-	
+
 	public int getValueOfHand() {
-		return 0;
-		
+		int counter = 0;
+		for (Card card : hand) {
+			counter += card.getValue();
+		}
+		return counter;
+
+	}
+
+	public boolean clearHand() {
+		if (hand.size() != 0) {
+			hand = new ArrayList<Card>();
+			return true;
+		}
+		return false;
+
+	}
+
+	public boolean recieveCards(List<Card> cards) {
+		if (cards.size() == 0) {
+			return false;
+		}
+		for (Card card : cards) {
+			hand.add(card);
+		}
+		return true;
 	}
 
 }
