@@ -1,7 +1,7 @@
 package com.skilldistillery.cards.blackjack;
 
 public class Player {
-	public Hand hand;
+	public Hand hand = new Hand();
 	public String name;
 
 	public Player() {

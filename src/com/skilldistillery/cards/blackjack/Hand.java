@@ -51,4 +51,12 @@ public class Hand {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("hand is ");
+		builder.append(hand);
+		return builder.toString();
+	}
+
 }

@@ -8,6 +8,7 @@ public class Dealer {
 
 	public Dealer() {
 		deck = new Deck();
+		hand = new Hand();
 	}
 
 	public void hit() {

@@ -20,11 +20,9 @@ public class Card {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Card ");
-		builder.append(rank);
+		builder.append(rank.toString());
 		builder.append(" of ");
 		builder.append(suit);
-		builder.append(".");
 		return builder.toString();
 	}
 
