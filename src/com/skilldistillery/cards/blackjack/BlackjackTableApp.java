@@ -31,10 +31,10 @@ public class BlackjackTableApp {
 		dealerHand.addCard(newDeck.dealCard());
 		dealerHand.addCard(newDeck.dealCard());
 		System.out.println("The dealer's " + dealerHand);
-
+		
+		winner(playerHand, dealerHand);
 		hitStay(playerHand, newDeck, kb);
 		dealerHitStay(dealerHand, newDeck);
-		winner(playerHand, dealerHand);
 
 	}
 
@@ -75,7 +75,12 @@ public class BlackjackTableApp {
 	}
 
 	private static void winner(Hand playerHand, Hand dealerHand) {
-		// TODO Auto-generated method stub
+		if (playerHand.getValueOfHand() == 21) {
+			System.out.println("\nCongratulations you have won!");
+		}
+		if (dealerHand.getValueOfHand() == 21) {
+			System.out.println("\nThe dealer won!");
+		}
 
 	}
 }
