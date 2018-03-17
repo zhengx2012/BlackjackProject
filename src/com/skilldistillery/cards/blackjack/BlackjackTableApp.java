@@ -34,10 +34,7 @@ public class BlackjackTableApp {
 
 		hitStay(playerHand, newDeck, kb);
 		dealerHitStay(dealerHand, newDeck);
-
-		if (playerHand.getValueOfHand() > 21) {
-			System.out.println("\nYou have busted!" + playerHand);
-		}
+		winner(playerHand, dealerHand);
 
 	}
 
@@ -59,12 +56,26 @@ public class BlackjackTableApp {
 				System.out.println("\nYour final hand is: " + playerHand);
 			}
 		}
+		bust(playerHand);
 	}
-	
+
 	public static void dealerHitStay(Hand dealerHand, Deck newDeck) {
 		while (dealerHand.getValueOfHand() < 17) {
 			dealerHand.addCard(newDeck.dealCard());
 		}
+		bust(dealerHand);
 		System.out.println("The dealer's " + dealerHand);
+	}
+
+	private static void bust(Hand hand) {
+		if (hand.getValueOfHand() > 21) {
+			System.out.println("\nYou have busted! The " + hand);
+		}
+
+	}
+
+	private static void winner(Hand playerHand, Hand dealerHand) {
+		// TODO Auto-generated method stub
+
 	}
 }
