@@ -15,6 +15,7 @@ public class BlackjackTableApp {
 	}
 
 	private static void runGame(Scanner kb) {
+		//Creates new deck and hand for the player and dealer
 		Deck newDeck = new Deck();
 		Player player = new Player();
 		Hand playerHand = player.getHand();
@@ -23,19 +24,25 @@ public class BlackjackTableApp {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("~~~~~ Welcome to the Blackjack Table ~~~~~");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-
+		
+		//Player will get two cards added to their hand as they enter the game
 		playerHand.addCard(newDeck.dealCard());
 		playerHand.addCard(newDeck.dealCard());
 		System.out.println("Your " + playerHand);
-
+		
+		//Dealer will get two cards as well
+		//Need to only show one hand
 		dealerHand.addCard(newDeck.dealCard());
 		dealerHand.addCard(newDeck.dealCard());
 		System.out.println("The dealer's " + dealerHand);
 		
+		//If either the play or the dealer gets 21 at the start of the game, its an automatic win
 		if(winner(playerHand, dealerHand) == true) {
 			System.exit(0);
 		}
+		//Player can choose to hit or stay
 		hitStay(playerHand, newDeck, kb);
+		//Dealer is automatically going to hit if he is under 17
 		dealerHitStay(dealerHand, newDeck);
 
 	}
