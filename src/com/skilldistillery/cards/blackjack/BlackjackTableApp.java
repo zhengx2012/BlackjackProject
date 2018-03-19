@@ -34,9 +34,9 @@ public class BlackjackTableApp {
 		// Dealer will get two cards as well
 		// Need to only show one hand
 		dealerHand.addCard(newDeck.dealCard());
-		dealerHand.addCard(newDeck.dealCard());
 		System.out.println("\nThe dealer's " + dealerHand);
 		System.out.println("\tThe dealer has " + dealerHand.getValueOfHand());
+		dealerHand.addCard(newDeck.dealCard());
 
 		// If either the play or the dealer gets 21 at the start of the game, its an
 		// automatic win
