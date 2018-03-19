@@ -53,7 +53,8 @@ public class BlackjackTableApp {
 	public static void hitStay(Hand playerHand, Deck newDeck, Scanner kb) {
 		
 		int hitOrStay = 0;
-		do {
+		//Dont need a do while loop because you have a recursive statement in the first if statement
+		if (playerHand.getValueOfHand() < 21) {
 			System.out.println("\nWhat would you like to do?" + " \n1. Hit" + " \n2. Stay");
 			if (playerHand.getValueOfHand() < 21) {
 				hitOrStay = kb.nextInt();
@@ -69,7 +70,7 @@ public class BlackjackTableApp {
 					System.out.println("\nYour final hand is: " + playerHand);
 				}
 			}
-		} while (hitOrStay == 1);
+		}
 	}
 
 	public static void dealerHitStay(Hand dealerHand, Deck newDeck) {
