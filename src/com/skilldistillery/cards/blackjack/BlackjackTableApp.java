@@ -46,12 +46,19 @@ public class BlackjackTableApp {
 
 		// Player can choose to hit or stay
 		hitStay(playerHand, dealerHand, newDeck, kb);
+		System.out.println("\tYou have " + playerHand.getValueOfHand());
+		System.out.println("\tThe dealer has " + dealerHand.getValueOfHand());
+		
 		// Dealer is automatically going to hit if he is under 17
-//		dealerHitStay(dealerHand, newDeck, kb);
+		// dealerHitStay(dealerHand, newDeck, kb);
 		// Need to create a method to end the hand and start new one if player or dealer
 		// wins
-
 		winner(playerHand, dealerHand, kb);
+		System.out.println("\tYou have " + playerHand.getValueOfHand());
+		System.out.println("\tThe dealer has " + dealerHand.getValueOfHand());
+
+		// Create a method to continue or quit playing
+		continueOrQuit(kb);
 
 	}
 
@@ -86,23 +93,14 @@ public class BlackjackTableApp {
 			}
 			dealerBust(dealerHand);
 			System.out.println("The dealer's " + dealerHand);
-			runGame(kb);
+			continueOrQuit(kb);
 		}
 	}
-
-//	public static void dealerHitStay(Hand dealerHand, Deck newDeck, Scanner kb) {
-//		while (dealerHand.getValueOfHand() < 17) {
-//			dealerHand.addCard(newDeck.dealCard());
-//		}
-//		dealerBust(dealerHand);
-//		System.out.println("The dealer's " + dealerHand);
-//		runGame(kb);
-//	}
 
 	private static void playerBust(Hand playerHand, Scanner kb) {
 		if (playerHand.getValueOfHand() > 21) {
 			System.out.println("\nYou Busted!");
-			runGame(kb);
+			continueOrQuit(kb);
 		}
 
 	}
@@ -128,14 +126,31 @@ public class BlackjackTableApp {
 	private static void winner(Hand playerHand, Hand dealerHand, Scanner kb) {
 		if ((dealerHand.getValueOfHand() > playerHand.getValueOfHand()) || (dealerHand.getValueOfHand() == 21)) {
 			System.out.println("\nThe dealer has won!");
-			System.out.println("\tThe dealer has " + dealerHand.getValueOfHand());
-			runGame(kb);
+			continueOrQuit(kb);
 		}
 
 		else if ((playerHand.getValueOfHand() > dealerHand.getValueOfHand()) || (playerHand.getValueOfHand() == 21)) {
-			System.out.println("\nYou have won!");
-			System.out.println("\tYou have " + dealerHand.getValueOfHand());
+			System.out.println("\n\tYou have won!");
+			continueOrQuit(kb);
+		}
+
+	}
+
+	private static void continueOrQuit(Scanner kb) {
+		System.out.println("\nWould you like to continue playing?");
+		System.out.println("1. Yes, let's keep playing!");
+		System.out.println("2. No, please let me leave this game!");
+		int stayOrLeave = kb.nextInt();
+		if ((stayOrLeave != 1) && (stayOrLeave != 2)) {
+			continueOrQuit(kb);
+		}
+		else if (stayOrLeave == 1) {
 			runGame(kb);
+		}
+		
+		if (stayOrLeave == 2) {
+			System.out.println("\nWe're sad to see you leave, please come back soon...");
+			System.exit(0);
 		}
 
 	}
